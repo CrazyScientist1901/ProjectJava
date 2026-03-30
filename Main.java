@@ -1,16 +1,20 @@
 import java.time.LocalDate;
-// This is the main class that demonstrates the functionality of the ExpenseManager and its related classes.
+
+//Main function to demonstrate the ExpenseManager and related classes.
+
 public class Main {
     public static void main(String[] args) {
         ExpenseManager manager = new ExpenseManager();
-        manager.addExpense(new UtilityExpense("Monthly Bill", 120.50, LocalDate.now(), "Electricity"));
-        manager.addExpense(new GroceryExpense("Whole Foods Run", 85.00, LocalDate.now(), true));
-        manager.addExpense(new GroceryExpense("Ice Cream", 12.00, LocalDate.now(), false));
+        
+        Budget groceryBudget = new Budget("Grocery", 100.00);
+
+        manager.addExpense(new GroceryExpense("Weekly Staples", 80.00, LocalDate.now(), true));
+        manager.addExpense(new GroceryExpense("Fancy Coffee Beans", 30.00, LocalDate.now(), false));
+        manager.addExpense(new UtilityExpense("Wifi", 50.00, LocalDate.now(), "Internet"));
 
         System.out.println("--- Home Expense Report ---");
-        manager.showAllExpenses();
-        
-        System.out.println("---------------------------");
-        System.out.println("Total Monthly Outflow: $" + manager.calculateTotal());
+        double currentGroceries = manager.getTotalForGroceries();
+        groceryBudget.checkLimit(currentGroceries);
+        manager.exportToCSV("my_expenses.csv");
     }
 }
