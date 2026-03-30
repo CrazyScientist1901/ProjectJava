@@ -33,7 +33,7 @@ This project serves as a comprehensive demonstration of the four pillars of OOP:
   ├── my_expenses.csv       # Storing Expenses
 ```
 
-## ⚙️ How to Run
+## How to Run
 1.  **Prerequisites:** Ensure you have **JDK 11 or higher** installed.
 2.  **Clone the Repo:** ```bash
     git clone https://github.com/CrazyScientist1901/ProjectJava.git
@@ -48,7 +48,7 @@ This project serves as a comprehensive demonstration of the four pillars of OOP:
     java Main
     ```
 
-## 📊 Sample Output
+## Sample Output
 ```text
 --- MAIN MENU ---
 1. Add Utility Expense
