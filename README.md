@@ -35,7 +35,7 @@ This project serves as a comprehensive demonstration of the four pillars of OOP:
 ## ⚙️ How to Run
 1.  **Prerequisites:** Ensure you have **JDK 11 or higher** installed.
 2.  **Clone the Repo:** ```bash
-    git clone https://github.com/your-username/home-expense-manager.git
+    git clone https://github.com/CrazyScientist1901/ProjectJava.git
     cd home-expense-manager
     ```
 3.  **Compile the Code:**
