@@ -13,19 +13,15 @@ public class ExpenseManager {
     public void addExpense(Expense e) {
         expenses.add(e);
     }
-
-    // --- ADDED: This fixes the "undefined" error in Main ---
     public void showAllExpenses() {
         if (expenses.isEmpty()) {
             System.out.println("No expenses recorded yet.");
             return;
         }
         for (Expense e : expenses) {
-            e.displayDetails(); // Polymorphism: Calls the correct displayDetails() for Utility vs Grocery
+            e.displayDetails(); 
         }
     }
-
-    // --- ADDED: This fixes the "undefined" error for total calculation ---
     public double calculateTotal() {
         double total = 0;
         for (Expense e : expenses) {
@@ -45,14 +41,16 @@ public class ExpenseManager {
     }
 
     public void exportToCSV(String filename) {
-        try (FileWriter writer = new FileWriter(filename)) {
-            writer.write("Description,Amount,Date\n"); 
-            for (Expense e : expenses) {
-                writer.write(e.getDescription() + "," + e.getAmount() + "," + e.getDate() + "\n");
-            }
-            System.out.println("Successfully saved to " + filename);
-        } catch (IOException ex) {
-            System.out.println("An error occurred while saving file.");
+    try (FileWriter writer = new FileWriter(filename, true)) {
+        for (Expense e : expenses) {
+            writer.write(e.getDescription() + "," + e.getAmount() + "," + e.getDate() + "\n");
         }
+        
+        System.out.println("Successfully appended data to " + filename);
+        expenses.clear(); 
+        
+    } catch (IOException ex) {
+        System.out.println("An error occurred while saving file.");
     }
+}
 }
