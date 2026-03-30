@@ -15,6 +15,9 @@ public class Main {
         System.out.println("======================================");
 
         while (running) {
+            System.out.print("Enter your Monthly Income to start: ");
+            double myIncome = scanner.nextDouble();
+            Savings mySavings = new Savings(myIncome);
             System.out.println("\n--- MAIN MENU ---");
             System.out.println("1. Add Utility Expense");
             System.out.println("2. Add Grocery Expense");
@@ -56,7 +59,7 @@ public class Main {
                 case 3:
                     System.out.println("\n--- ALL RECORDED EXPENSES ---");
                     manager.showAllExpenses();
-                    System.out.println("Total: $" + manager.calculateTotal());
+                    System.out.println("Total: " + manager.calculateTotal());
                     break;
 
                 case 4:
@@ -71,6 +74,10 @@ public class Main {
                 case 6:
                     System.out.println("Exiting... Goodbye!");
                     running = false;
+                    break;
+                case 7:
+                    double totalSpent = manager.calculateTotal();
+                    mySavings.calculateAndDisplaySavings(totalSpent);
                     break;
 
                 default:
