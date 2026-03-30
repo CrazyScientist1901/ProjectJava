@@ -2,7 +2,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-//Expense Manager class to manage expenses and export to CSV.
 
 public class ExpenseManager {
     private List<Expense> expenses;
@@ -15,6 +14,26 @@ public class ExpenseManager {
         expenses.add(e);
     }
 
+    // --- ADDED: This fixes the "undefined" error in Main ---
+    public void showAllExpenses() {
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses recorded yet.");
+            return;
+        }
+        for (Expense e : expenses) {
+            e.displayDetails(); // Polymorphism: Calls the correct displayDetails() for Utility vs Grocery
+        }
+    }
+
+    // --- ADDED: This fixes the "undefined" error for total calculation ---
+    public double calculateTotal() {
+        double total = 0;
+        for (Expense e : expenses) {
+            total += e.getAmount();
+        }
+        return total;
+    }
+
     public double getTotalForGroceries() {
         double total = 0;
         for (Expense e : expenses) {
@@ -25,7 +44,6 @@ public class ExpenseManager {
         return total;
     }
 
-    // Save all expenses to a CSV file
     public void exportToCSV(String filename) {
         try (FileWriter writer = new FileWriter(filename)) {
             writer.write("Description,Amount,Date\n"); 
