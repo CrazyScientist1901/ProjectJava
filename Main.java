@@ -5,6 +5,10 @@ public class Main {
     public static void main(String[] args) {
         ExpenseManager manager = new ExpenseManager();
         Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your Monthly Income to start: ");
+            double myIncome = scanner.nextDouble();
+            Savings mySavings = new Savings(myIncome);
         
         Budget groceryBudget = new Budget("Grocery", 10000.00);
         
@@ -15,9 +19,6 @@ public class Main {
         System.out.println("======================================");
 
         while (running) {
-            System.out.print("Enter your Monthly Income to start: ");
-            double myIncome = scanner.nextDouble();
-            Savings mySavings = new Savings(myIncome);
             System.out.println("\n--- MAIN MENU ---");
             System.out.println("1. Add Utility Expense");
             System.out.println("2. Add Grocery Expense");
